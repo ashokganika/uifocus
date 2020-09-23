@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <div className="flex">
         <div className="flex-item">
-          <p>hello</p>
+          <p>hello world. This is react application for uifocusing</p>
         </div>
       </div>
     </div>
