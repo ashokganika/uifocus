@@ -14,6 +14,6 @@ server.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build/index.html"));
 });
 
-server.listen(4000, () => {
+server.listen(process.env.PORT || 4000, () => {
   console.log("server is listeining at pot 4000");
 });
