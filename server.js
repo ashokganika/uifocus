@@ -6,7 +6,11 @@ const server = express();
 
 server.use(express.static(path.join(__dirname, "build")));
 
-server.get("/*", (req, res) => {
+server.get("/api", (req, res) => {
+  res.send("<div>helo this is a get request</div>");
+});
+
+server.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build/index.html"));
 });
 
