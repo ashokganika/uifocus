@@ -19,12 +19,12 @@
     "serve": "^11.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "serve build",
-    "pro": "nodemon server.js"
+    // "dev": "serve build",
+    // "pro": "nodemon server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
