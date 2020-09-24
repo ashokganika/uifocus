@@ -1,15 +1,20 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./component/header";
+import Aboutus from "./screen/aboutus";
+import Blog from "./screen/blog";
+import Home from "./screen/home";
 
 function App() {
   return (
-    <div className="App">
-      <div className="flex">
-        <div className="flex-item">
-          <p>hello world. This is react application for uifocusing</p>
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/blog" component={Blog} />
+        <Route exact path="/about-us" component={Aboutus} />
+      </Switch>
+    </Router>
   );
 }
 
