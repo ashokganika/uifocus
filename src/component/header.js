@@ -23,6 +23,10 @@ const menutItemDetail = [
     itemName: "About Us",
     itemUrl: "/about-us",
   },
+  {
+    itemName: "Sign In",
+    itemUrl: "/register",
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
