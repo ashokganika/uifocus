@@ -27,6 +27,10 @@ const menutItemDetail = [
     itemName: "Sign In",
     itemUrl: "/register",
   },
+  {
+    itemName: "Log In",
+    itemUrl: "/login",
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -46,12 +50,17 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     justifyContent: "space-around",
   },
+  appbarShadow: {
+    boxShadow: "none",
+  },
 }));
 
 function Header({ history }) {
   const classes = useStyles();
   const theme = useTheme();
+
   const isExtraSmall = useMediaQuery(theme.breakpoints.down("xs"));
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -67,9 +76,7 @@ function Header({ history }) {
 
   return (
     <div className={classes.root}>
-      {console.log("i am rendering")}
-
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appbarShadow}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Photos
@@ -116,7 +123,6 @@ function Header({ history }) {
               {menutItemDetail.map(({ itemName, itemUrl }) => (
                 <Button
                   key={itemName}
-                  variant="contained"
                   onClick={() => handleClose(itemUrl, null)}
                 >
                   {itemName}

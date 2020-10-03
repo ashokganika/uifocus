@@ -1,25 +1,42 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import * as _ from "lodash";
+import ErrorBoundary from "./component/ErrorBoundery";
 import Header from "./component/header";
 import AboutUs from "./screen/aboutus";
 import Blog from "./screen/blog";
 import Home from "./screen/home";
+import Login from "./screen/Login";
 import Pagenotfound from "./screen/pagenotfound";
-import Signup from "./screen/signup";
+
+const SignUp = React.lazy(() => import("./screen/signup"));
 
 function App() {
   return (
     <Router>
       <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/blog" component={Blog} />
-        <Route exact path="/about-us" component={AboutUs} />
-        <Route exact path="/register" component={Signup} />
+      <Suspense
+        fallback={
+          <div>
+            <h2>Loading.....................</h2>
+          </div>
+        }
+      >
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/blog">
+            <ErrorBoundary>
+              <Blog />
+            </ErrorBoundary>
+          </Route>
+          <Route exact path="/about-us">
+            <AboutUs searchAbout="dogs" />
+          </Route>
+          <Route exact path="/register" component={SignUp} />
+          <Route exact path="/login" component={Login} />
 
-        <Route component={Pagenotfound} />
-      </Switch>
+          <Route component={Pagenotfound} />
+        </Switch>
+      </Suspense>
     </Router>
   );
 }
