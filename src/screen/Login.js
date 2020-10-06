@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { TextField } from "formik-material-ui";
@@ -13,8 +13,11 @@ import {
 } from "@material-ui/core";
 
 function Login() {
+  const [click, setclick] = useState(0);
+
   return (
     <Grid container alignItems="center" direction="column">
+      {console.log("i am rendering from LOGIN")}
       <Grid item xs={12} sm={6}>
         <Formik
           initialValues={{ email: "", password: "" }}
@@ -72,6 +75,13 @@ function Login() {
             We'll never share your email.
           </FormHelperText>
         </FormControl>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => setclick(click + 1)}
+        >
+          Increment
+        </Button>
       </Grid>
     </Grid>
   );

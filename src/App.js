@@ -1,19 +1,21 @@
+import { Snackbar } from "@material-ui/core";
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ErrorBoundary from "./component/ErrorBoundery";
 import Header from "./component/header";
-import AboutUs from "./screen/aboutus";
-import Blog from "./screen/blog";
 import Home from "./screen/home";
-import Login from "./screen/Login";
 import Pagenotfound from "./screen/pagenotfound";
 
 const SignUp = React.lazy(() => import("./screen/signup"));
+const AboutUS = React.lazy(() => import("./screen/aboutus"));
+const Login = React.lazy(() => import("./screen/Login"));
+const Blog = React.lazy(() => import("./screen/blog"));
 
 function App() {
   return (
     <Router>
       <Header />
+
       <Suspense
         fallback={
           <div>
@@ -29,7 +31,7 @@ function App() {
             </ErrorBoundary>
           </Route>
           <Route exact path="/about-us">
-            <AboutUs searchAbout="dogs" />
+            <AboutUS searchAbout="dogs" />
           </Route>
           <Route exact path="/register" component={SignUp} />
           <Route exact path="/login" component={Login} />
@@ -37,6 +39,7 @@ function App() {
           <Route component={Pagenotfound} />
         </Switch>
       </Suspense>
+      <Snackbar />
     </Router>
   );
 }

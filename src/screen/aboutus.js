@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Aboutus({ searchAbout }) {
+function Aboutus({ searchAbout }) {
   const [dogState, setDogState] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
@@ -48,7 +48,8 @@ export default function Aboutus({ searchAbout }) {
         <h2>Loading....</h2>
       ) : (
         <Grid container>
-          {console.log(dogState)}
+          {console.log("i am rendering from ABOUT _US")}
+
           <Grid item xs={1} sm={2}></Grid>
           <Grid
             item
@@ -93,3 +94,5 @@ export default function Aboutus({ searchAbout }) {
     </div>
   );
 }
+
+export default React.memo(Aboutus);
