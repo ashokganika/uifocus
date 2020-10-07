@@ -1,4 +1,5 @@
 import { IS_LOADING, PRODUCT_LIST } from "../../actionTypes";
+import isErrorAction from "../errorAction";
 
 export const productList = () => async (dispatch) => {
   dispatch(isLoadingAction(true));
@@ -12,7 +13,7 @@ export const productList = () => async (dispatch) => {
       payload: productData,
     });
   } catch (error) {
-    console.log("error", error);
+    dispatch(isErrorAction(true, "network error please try again...", "error"));
   }
   dispatch(isLoadingAction(false));
 };

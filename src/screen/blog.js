@@ -19,7 +19,6 @@ class Blog extends React.Component {
     this.setState({ stateVale: this.state.stateVale + 1 });
   };
   render() {
-    console.log(this.props.productList);
     const { data, isLoading } = this.props.productList;
     let loading = (
       <div>

@@ -48,8 +48,6 @@ function Aboutus({ searchAbout }) {
         <h2>Loading....</h2>
       ) : (
         <Grid container>
-          {console.log("i am rendering from ABOUT _US")}
-
           <Grid item xs={1} sm={2}></Grid>
           <Grid
             item
